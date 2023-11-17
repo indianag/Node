@@ -1,8 +1,9 @@
-const writeAndRead = require('./writeAndReadObject');
-const readConsole = require('./readConsole');
+const wr = require('./writeAndReadObject');
+const rd = require('./readConsole');
 
 
-writeAndRead('./miFichero.json', {calle:"Teruel", numero: 8});
-readConsole(console.log)
+rd.readConsole( function(obj){
+    wr.writeAndRead("./index.json", obj);
+})
 
 

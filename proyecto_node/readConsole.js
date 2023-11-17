@@ -22,4 +22,6 @@ function readConsole(callback) {
         });
     });
 }
-module.exports = readConsole;
+
+// readConsole(console.log)
+module.exports = {readConsole};
