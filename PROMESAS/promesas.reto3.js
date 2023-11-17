@@ -18,6 +18,8 @@ function question(prompt) {
 
 // Función principal para ejecutar el proceso
 async function main() {
+
+  try {
   // Preguntar al usuario por name, surname y age
   const name = await question('Ingresa tu nombre: ');
   const surname = await question('Ingresa tu apellido: ');
@@ -26,13 +28,11 @@ async function main() {
   // Crear un objeto con los valores proporcionados
   const userObj = { name, surname, age };
 
-  try {
     // Convertir el objeto a JSON y guardarlo en un archivo
-    await fs.writeFile('#', JSON.stringify(userObj));
-    console.log('El objeto se ha escrito en #');
-
+    await fs.writeFile('./user.json', JSON.stringify(userObj));
+  
     // Leer el archivo y mostrar el contenido por consola
-    const fileContent = await fs.readFile('#', 'utf8');
+    const fileContent = await fs.readFile('./user.json', 'utf8');
     const readObj = JSON.parse(fileContent);
     console.log('Leer el objeto del archivo:', readObj);
   } catch (error) {
