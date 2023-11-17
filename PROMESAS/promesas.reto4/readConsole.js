@@ -64,7 +64,7 @@ return new Promise((resolve, reject) => {
 function readConsole(callback){
   // se le regunta al usuario por su nombre, luego encadena la promesa para el apellido y, finalmente, para la edad
   question('Ingresa tu nombre: ')
-  .then((name) =>{
+  .then((name) => {
     return question('Ingresa tu apellido: ');
   })
   .then((surname) => {
@@ -72,7 +72,7 @@ function readConsole(callback){
   }) 
   .then((age) =>{
     //Una vez que se recopila toda la entrada, se crea un objeto con la información del usuario y se llama al callback
-    const userObj = { name, surname, age };
+    const userObj = { name, surname, age};
     callback(userObj);
   })
   .catch((err) => {      
@@ -80,11 +80,6 @@ function readConsole(callback){
     console.error(`Error: ${err}`);    
   }) 
 }
-
-// // Ejemplo de uso: llamar a 'readConsole' con una función de retorno de llamada para manejar el objeto de usuario
-// readConsole((userObj) => {
-//   console.log('Detalles del usuario:', userObj);
-// });
 
 
 

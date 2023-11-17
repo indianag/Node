@@ -16,33 +16,80 @@ const userData = {
   age: 0
 };
 
-async function main() {
-  try {
-    // eliminar el archivo JSON existente
-    await fs.unlink('#');
+// async function main() {
+//   try {
+//     // eliminar el archivo JSON existente
+//     await fs.unlink('./writeRead.json');
     
-    // Obtener la opinion del usuario
-    userData.name = await askQuestion('Ingresa tu nombre: ');
-    userData.surname = await askQuestion('Ingresa tu apellido: ');
-    userData.age = parseInt(await askQuestion('Ingresa tu edad: '), 10);
+//     // Obtener la opinion del usuario
+//     userData.name = await askQuestion('Ingresa tu nombre: ');
+//     userData.surname = await askQuestion('Ingresa tu apellido: ');
+//     userData.age = parseInt(await askQuestion('Ingresa tu edad: '), 10);
 
+//     // Escribir datos de usuario en un archivo JSON
+//     await fs.writeFile('./writeRead.json', JSON.stringify(userData));
+
+//     // Leer e imprimir datos de usuario desde un archivo JSON
+//     //Lee el contenido del archivo 'user.json'. El resultado se almacena en la variable 
+//     const fileData = await fs.readFile('./writeRead.json', 'utf-8');
+//     //Analiza el contenido del archivo como una cadena JSON y lo convierte en un objeto JavaScript. El resultado se almacena en la variable 
+//     const parsedData = JSON.parse(fileData);
+//     //Muestra por consola el mensaje (User Data) seguido del contenido del (objeto parsedData)
+//     console.log('User Data:', parsedData);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   } finally {
+//     rl.close();
+//   }
+//   //Esto muestra los datos del usuario almacenados en el objeto parsedData.
+// }
+
+// function askQuestion(question) {
+//   return new Promise((resolve) => {
+//     rl.question(question, (answer) => {
+//       resolve(answer);
+//     });
+//   });
+// }
+
+// main();
+
+
+// then/catch
+
+// Eliminar el archivo JSON existente
+fs.unlink('./writeRead.json')
+  .then(() => {
+    // Obtener la opinión del usuario
+    return askQuestion('Ingresa tu nombre: ');
+  })
+  .then((name) => {
+    userData.name = name;
+    return askQuestion('Ingresa tu apellido: ');
+  })
+  .then((surname) => {
+    userData.surname = surname;
+    return askQuestion('Ingresa tu edad: ');
+  })
+  .then((age) => {
+    userData.age = parseInt(age, 10);
     // Escribir datos de usuario en un archivo JSON
-    await fs.writeFile('#', JSON.stringify(userData));
-
+    return fs.writeFile('./writeRead.json', JSON.stringify(userData));
+  })
+  .then(() => {
     // Leer e imprimir datos de usuario desde un archivo JSON
-    //Lee el contenido del archivo 'user.json'. El resultado se almacena en la variable 
-    const fileData = await fs.readFile('#', 'utf-8');
-    //Analiza el contenido del archivo como una cadena JSON y lo convierte en un objeto JavaScript. El resultado se almacena en la variable 
+    return fs.readFile('./writeRead.json', 'utf-8');
+  })
+  .then((fileData) => {
     const parsedData = JSON.parse(fileData);
-    //Muestra por consola el mensaje (User Data) seguido del contenido del (objeto parsedData)
     console.log('User Data:', parsedData);
-  } catch (error) {
+  })
+  .catch((error) => {
     console.error('Error:', error);
-  } finally {
+  })
+  .finally(() => {
     rl.close();
-  }
-  //Esto muestra los datos del usuario almacenados en el objeto parsedData.
-}
+  });
 
 function askQuestion(question) {
   return new Promise((resolve) => {
@@ -52,7 +99,79 @@ function askQuestion(question) {
   });
 }
 
-main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

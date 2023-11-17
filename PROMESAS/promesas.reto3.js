@@ -16,33 +16,64 @@ function question(prompt) {
   });
 }
 
-// Función principal para ejecutar el proceso
-async function main() {
+// // Función principal para ejecutar el proceso
+// async function main() {
 
-  try {
-  // Preguntar al usuario por name, surname y age
-  const name = await question('Ingresa tu nombre: ');
-  const surname = await question('Ingresa tu apellido: ');
-  const age = await question('Ingresa tu edad: ');
+//   try {
+//   // Preguntar al usuario por name, surname y age
+//   const name = await question('Ingresa tu nombre: ');
+//   const surname = await question('Ingresa tu apellido: ');
+//   const age = await question('Ingresa tu edad: ');
 
-  // Crear un objeto con los valores proporcionados
-  const userObj = { name, surname, age };
+//   // Crear un objeto con los valores proporcionados
+//   const userObj = { name, surname, age };
 
-    // Convertir el objeto a JSON y guardarlo en un archivo
-    await fs.writeFile('./user.json', JSON.stringify(userObj));
+//     // Convertir el objeto a JSON y guardarlo en un archivo
+//     await fs.writeFile('./user.json', JSON.stringify(userObj));
   
-    // Leer el archivo y mostrar el contenido por consola
-    const fileContent = await fs.readFile('./user.json', 'utf8');
-    const readObj = JSON.parse(fileContent);
-    console.log('Leer el objeto del archivo:', readObj);
-  } catch (error) {
-    console.error('Error:', error);
-  }
+//     // Leer el archivo y mostrar el contenido por consola
+//     const fileContent = await fs.readFile('./user.json', 'utf8');
+//     const readObj = JSON.parse(fileContent);
+//     console.log('Leer el objeto del archivo:', readObj);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// }
+
+// // Llamar a la función principal
+// main();
+
+function main() {
+
+  question('Ingresa tu nombre: ')
+    .then((name) => {
+      return question('Ingresa tu apellido: ');
+    })
+    .then((surname) => {
+      return question('Ingresa tu edad: ');
+    })
+    .then((age) => {
+      // Crear un objeto con los valores proporcionados
+      const userObj = { name, surname, age };
+
+      // Convertir el objeto a JSON y guardarlo en un archivo
+      return fs.writeFile('./user.json', JSON.stringify(userObj));
+    })
+    .then(() => {
+      // Leer el archivo y mostrar el contenido por consola
+      return fs.readFile('./user.json', 'utf8');
+    })
+    .then((fileContent) => {
+      const readObj = JSON.parse(fileContent);
+      console.log('Leer el objeto del archivo:', readObj);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
 
 // Llamar a la función principal
 main();
-
 
 
 //Este código utiliza las funciones de readline para solicitar información 
