@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const Book = require('./Book.js');
+const {Book} = require('./Book.js');
 
 const app = express();
 const port = 3000;
