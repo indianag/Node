@@ -6,7 +6,7 @@ const bookCtrl1 = require ("../controller/book1.controller")
 router.get("/", bookCtrl1.getStart);
 
 // Endpoint para obtener todos los libros
-router.get("/book1", bookCtrl1.getBooks);
+router.get("/book", bookCtrl1.getBooks);
 
 // Endpoint para crear un nuevo libro
 router.post("/book", bookCtrl1.postBook);
