@@ -6,16 +6,16 @@ const bookCtrl = require ("../controller/books.controller")
 router.get("/", bookCtrl.getStart);
 
 // Endpoint para obtener todos los libros
-router.get("/book", bookCtrl.getBooks);
+router.get("/books", bookCtrl.getBooks);
 
 // Endpoint para crear un nuevo libro
-router.post("/book", bookCtrl.postBook);
+router.post("/books", bookCtrl.postBook);
 
 // Endpoint para modificar los datos de un libro
-router.put("/book", bookCtrl.putBook);
+router.put("/books", bookCtrl.putBook);
 
 // Endpoint para eliminar un libro
-router.delete("/book", bookCtrl.deleteBook);
+router.delete("/books", bookCtrl.deleteBook);
 
 
 
