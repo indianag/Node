@@ -8,6 +8,9 @@ router.get("/", bookCtrl.getStart);
 // Endpoint para obtener todos los libros
 router.get("/books", bookCtrl.getBooks);
 
+// Endpoint para obtener un libro por su ID
+router.get("/books/:id", bookCtrl.getBookId)
+
 // Endpoint para crear un nuevo libro
 router.post("/books", bookCtrl.postBook);
 
