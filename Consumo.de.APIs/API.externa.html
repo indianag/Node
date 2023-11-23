@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de APIs externas</title>
+    <link rel="stylesheet" href="API.externa.css">
+</head>
+<body>
+    <!-- <table>
+        <tr>
+            <th colspan="2">Nombre</th>
+            
+        </tr>
+        <tr>
+            <td>habilidades</td>
+            <td>Imagen</td>
+        </tr>
+    </table> -->
+    <div class="box">
+        <h1>PokeAPI</h1>
+        <form id="pokemonForm">
+            <label for="pokemonName"></label>
+            <input type="text" id="pokemonName" placeholder="Nombre del Pokémon:" required>
+            <input type="button" onclick="getPokemonData()" value="Search">
+        </form>
+        <div id="pokemonData"></div>
+    </div>
+    <script src="API.externa.js"></script>
+</body>
+</html>
